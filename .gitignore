@@ -1,0 +1,34 @@
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Symfony
+symfony/var/
+symfony/vendor/
+
+# Laravel
+laravel/vendor/
+laravel/storage/*.key
+laravel/storage/logs/*
+laravel/storage/framework/cache/*
+laravel/storage/framework/sessions/*
+laravel/storage/framework/views/*
+laravel/bootstrap/cache/*.php
+
+# Node
+node_modules/
+
+# Composer
+composer.phar
