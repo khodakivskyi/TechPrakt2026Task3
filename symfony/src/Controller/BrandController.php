@@ -45,7 +45,7 @@ final class BrandController extends AbstractController
     #[Route('/brands', name: 'get_brands', methods: ['GET'])]
     public function getBrands(): Response
     {
-        return new JsonResponse(self::DATA, Reфsponse::HTTP_OK);
+        return new JsonResponse(self::DATA, Response::HTTP_OK);
     }
 
     #[Route('/brands/{id}', name: 'get_brand_by_id', methods: ['GET'])]
