@@ -1,0 +1,427 @@
+{
+  "info": {
+    "_postman_id": "8d674a14-8c02-418b-90c4-63aaba30c6a8",
+    "name": "Laravel Brands API",
+    "description": "# Brand API Laravel\n\n---\n\n## Опис архітектури\n\nЦей API реалізований на фреймворку Laravel та використовує In-Memory масив як тимчасове сховище даних. База даних не використовується, усі бренди існують тільки під час виконання запиту та не зберігаються між перезапусками застосунку.\n\nКонтролер реалізований через стандартні Laravel Controller класи. Маршрути визначаються у routes/api.php. Всі відповіді повертаються у форматі JSON через response()->json().\n\nID нового бренду генерується через rand(5, 100).\n\n---\n\n## Системні вимоги\n\nPHP 8.1+\nComposer\nLaravel Framework\n\n---\n\n## Зведена таблиця ендпоінтів\n\nGET | /api/brands | Отримати всі бренди | 200\nGET | /api/brands/{id} | Отримати бренд за ID | 200\nPOST | /api/brands | Створити бренд | 201\nPATCH | /api/brands/{id} | Оновити бренд | 200\nDELETE | /api/brands/{id} | Видалити бренд | 204",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Brands",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}{{api_prefix}}/brands",
+          "host": [
+            "{{base_url}}{{api_prefix}}"
+          ],
+          "path": [
+            "brands"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Brands",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{api_prefix}}/brands",
+              "host": [
+                "{{base_url}}{{api_prefix}}"
+              ],
+              "path": [
+                "brands"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.1"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 07:19:17 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"1\",\n        \"name\": \"Apple\",\n        \"description\": \"Technology company known for iPhone, MacBook, and ecosystem products.\",\n        \"createdAt\": \"2026-06-16T10:00:00Z\",\n        \"updatedAt\": \"2026-06-16T10:00:00Z\"\n    },\n    {\n        \"id\": \"2\",\n        \"name\": \"Nike\",\n        \"description\": \"Global sportswear brand producing footwear, apparel, and equipment.\",\n        \"createdAt\": \"2026-06-16T10:10:00Z\",\n        \"updatedAt\": \"2026-06-16T10:15:00Z\"\n    },\n    {\n        \"id\": \"3\",\n        \"name\": \"Samsung\",\n        \"description\": \"Electronics company offering smartphones, TVs, and appliances.\",\n        \"createdAt\": \"2026-06-16T10:20:00Z\",\n        \"updatedAt\": \"2026-06-16T10:20:00Z\"\n    },\n    {\n        \"id\": \"4\",\n        \"name\": \"Adidas\",\n        \"description\": \"Sportswear brand focused on shoes, clothing, and accessories.\",\n        \"createdAt\": \"2026-06-16T10:30:00Z\",\n        \"updatedAt\": \"2026-06-16T10:35:00Z\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get Brand By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}{{api_prefix}}/brands/1",
+          "host": [
+            "{{base_url}}{{api_prefix}}"
+          ],
+          "path": [
+            "brands",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Brand By Id",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{api_prefix}}/brands/1",
+              "host": [
+                "{{base_url}}{{api_prefix}}"
+              ],
+              "path": [
+                "brands",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.1"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 07:19:42 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"1\",\n    \"name\": \"Apple\",\n    \"description\": \"Technology company known for iPhone, MacBook, and ecosystem products.\",\n    \"createdAt\": \"2026-06-16T10:00:00Z\",\n    \"updatedAt\": \"2026-06-16T10:00:00Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Create Brand",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Apple\",\n  \"description\": \"Technology company\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}{{api_prefix}}/brands",
+          "host": [
+            "{{base_url}}{{api_prefix}}"
+          ],
+          "path": [
+            "brands"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Create Brand",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Apple\",\n  \"description\": \"Technology company\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}{{api_prefix}}/brands",
+              "host": [
+                "{{base_url}}{{api_prefix}}"
+              ],
+              "path": [
+                "brands"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.1"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 07:19:57 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"name\": \"Apple\",\n    \"description\": \"Technology company\",\n    \"id\": \"30\",\n    \"createdAt\": \"2026-06-17T07:19:57+00:00\",\n    \"updatedAt\": \"2026-06-17T07:19:57+00:00\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Brand",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Brand\",\n  \"description\": \"Updated description\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}{{api_prefix}}/brands/1",
+          "host": [
+            "{{base_url}}{{api_prefix}}"
+          ],
+          "path": [
+            "brands",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Update Brand",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Brand\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}{{api_prefix}}/brands/1",
+              "host": [
+                "{{base_url}}{{api_prefix}}"
+              ],
+              "path": [
+                "brands",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.1"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 07:20:09 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"1\",\n    \"name\": \"Updated Brand\",\n    \"description\": \"Updated description\",\n    \"createdAt\": \"2026-06-16T10:00:00Z\",\n    \"updatedAt\": \"2026-06-17T07:20:08+00:00\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Brand",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}{{api_prefix}}/brands/1",
+          "host": [
+            "{{base_url}}{{api_prefix}}"
+          ],
+          "path": [
+            "brands",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Delete Brand",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}{{api_prefix}}/brands/1",
+              "host": [
+                "{{base_url}}{{api_prefix}}"
+              ],
+              "path": [
+                "brands",
+                "1"
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.1"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 07:20:19 GMT"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "api_prefix",
+      "value": "/api"
+    }
+  ]
+}

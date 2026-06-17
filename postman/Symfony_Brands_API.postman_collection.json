@@ -1,0 +1,399 @@
+{
+  "info": {
+    "_postman_id": "751cd39a-4c31-4c3a-9f72-b2db0b5e1c00",
+    "name": "Symfony Brands API",
+    "description": "# Brand API Symfony\n\n---\n\n## Опис архітектури\n\nЦей API реалізований на фреймворку Symfony та використовує In-Memory масив (const DATA) як тимчасове сховище даних. База даних не використовується, усі бренди існують тільки в пам’яті під час виконання запиту та не зберігаються між перезапусками застосунку.\n\nКонтролер побудований на AbstractController, маршрутизація реалізована через PHP 8 атрибути #\\[Route\\]. Всі відповіді повертаються у форматі JSON через JsonResponse. Валідація виконується вручну. Для помилок використовується NotFoundHttpException (404). ID нового бренду генерується через rand(5, 100).\n\n---\n\n## Системні вимоги та структура проєкту\n\nСистемні вимоги:\n\nPHP 8.1+\n\nComposer\n\nSymfony CLI (або вбудований PHP сервер)\n\nSymfony Framework Bundle\n\nСтруктура проєкту:\n\nproject-root/\n\ncomposer.json\n\nconfig/\n\nsrc/\n\nController/\n\nBrandController.php\n\npublic/\n\nindex.php\n\nЗапуск:\n\ncomposer install\n\nsymfony server:start\n\nБазовий URL:  \n[http://localhost:8000](http://localhost:8000EndFragment)\n\n---\n\n## Зведена таблиця ендпоінтів\n\nМетод | URL | Опис | Статус\n\nGET | /brands | Отримати всі бренди | 200\n\nGET | /brands/{id} | Отримати бренд за ID | 200\n\nPOST | /brands | Створити бренд | 201\n\nPATCH | /brands/{id} | Оновити бренд | 200\n\nDELETE | /brands/{id} | Видалити бренд | 204\n\n---\n\n## GET /brands\n\nПовертає список усіх брендів із In-Memory масиву DATA.\n\nУспішна відповідь: 200 OK\n\n---\n\n## GET /brands/{id}\n\nПовертає бренд за його ID. Якщо бренд не знайдено — повертається 404 Not Found з повідомленням \"Brand not found\".\n\n---\n\n## POST /brands\n\nСтворює новий бренд.\n\nОбов’язкові поля:\n\nname\n\nЯкщо поле name відсутнє — повертається 400 Bad Request з помилкою валідації.\n\nУспішна відповідь: 201 Created\n\n---\n\n## PATCH /brands/{id}\n\nЧасткове оновлення бренду. Можна передавати name та description.\n\nЯкщо бренд не знайдено — 404 Not Found.\n\n---\n\n## DELETE /brands/{id}\n\nВидаляє бренд за ID.\n\nУспішна відповідь: 204 No Content\n\nЯкщо бренд не знайдено — 404 Not Found\n\n---\n\n## Примітка\n\nЦей API використовує In-Memory підхід, тому всі дані існують лише під час виконання запиту і не зберігаються між перезапусками сервера.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Brands",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/brands",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "brands"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Brands",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/brands",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "brands"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.22"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 06:29:05 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"1\",\n        \"name\": \"Apple\",\n        \"description\": \"Technology company known for iPhone, MacBook, and ecosystem products.\",\n        \"createdAt\": \"2026-06-16T10:00:00Z\",\n        \"updatedAt\": \"2026-06-16T10:00:00Z\"\n    },\n    {\n        \"id\": \"2\",\n        \"name\": \"Nike\",\n        \"description\": \"Global sportswear brand producing footwear, apparel, and equipment.\",\n        \"createdAt\": \"2026-06-16T10:10:00Z\",\n        \"updatedAt\": \"2026-06-16T10:15:00Z\"\n    },\n    {\n        \"id\": \"3\",\n        \"name\": \"Samsung\",\n        \"description\": \"Electronics company offering smartphones, TVs, and appliances.\",\n        \"createdAt\": \"2026-06-16T10:20:00Z\",\n        \"updatedAt\": \"2026-06-16T10:20:00Z\"\n    },\n    {\n        \"id\": \"4\",\n        \"name\": \"Adidas\",\n        \"description\": \"Sportwear brand focused on shoes, clothing, and accessories.\",\n        \"createdAt\": \"2026-06-16T10:30:00Z\",\n        \"updatedAt\": \"2026-06-16T10:35:00Z\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Get Brand By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/brands/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "brands",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Get Brand By Id",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/brands/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "brands",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.22"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 06:29:12 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"1\",\n    \"name\": \"Apple\",\n    \"description\": \"Technology company known for iPhone, MacBook, and ecosystem products.\",\n    \"createdAt\": \"2026-06-16T10:00:00Z\",\n    \"updatedAt\": \"2026-06-16T10:00:00Z\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Create Brand",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Microsoft\",\n    \"description\": \"Software and cloud services company\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/brands",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "brands"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Create Brand",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Microsoft\",\n    \"description\": \"Software and cloud services company\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/brands",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "brands"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.22"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 06:29:44 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"name\": \"Microsoft\",\n    \"description\": \"Software and cloud services company\",\n    \"id\": \"6\",\n    \"createdAt\": \"2026-06-17T06:29:44+00:00\",\n    \"updatedAt\": \"2026-06-17T06:29:44+00:00\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Update Brand",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Microsoft Updated\",\n    \"description\": \"Updated description\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/brands/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "brands",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Update Brand",
+          "originalRequest": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Microsoft Updated\",\n    \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/brands/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "brands",
+                "1"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.22"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 06:29:56 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"1\",\n    \"name\": \"Microsoft Updated\",\n    \"description\": \"Updated description\",\n    \"createdAt\": \"2026-06-16T10:00:00Z\",\n    \"updatedAt\": \"2026-06-17T06:29:56+00:00\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Delete Brand",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/brands/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "brands",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Delete Brand",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/brands/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "brands",
+                "1"
+              ]
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Host",
+              "value": "localhost:8000"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.4.22"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, private"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 17 Jun 2026 06:30:02 GMT"
+            },
+            {
+              "key": "X-Robots-Tag",
+              "value": "noindex"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    }
+  ]
+}
